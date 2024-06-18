@@ -20,8 +20,8 @@ const SignInForm = () => {
   const { email, password } = formFields;
 
   const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
+    
   };
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -30,9 +30,8 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-
       // eslint-disable-next-line no-unused-vars
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
