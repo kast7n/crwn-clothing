@@ -1,14 +1,21 @@
 import { useState } from "react";
 import {
   signInWithGooglePopup,
+  // eslint-disable-next-line no-unused-vars
   createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 
-import Button from "../../components/button/button.component";
+import Button, {
+  BUTTON_TYPES_CLASSES,
+} from "../../components/button/button.component";
 import FormInput from "../../components/form-input/form-input.component";
 
-import "./sign-in-form.styles.scss";
+import {
+  SignInContainer,
+  AuthTitle,
+  ButtonsContainer,
+} from "./sign-in-form.styles";
 
 const SignInForm = () => {
   const defaultFormFields = {
@@ -21,7 +28,6 @@ const SignInForm = () => {
 
   const logGoogleUser = async () => {
     await signInWithGooglePopup();
-    
   };
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -57,8 +63,8 @@ const SignInForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
   return (
-    <div className="sign-up-container">
-      <h2>Already have an account?</h2>
+    <SignInContainer>
+      <AuthTitle>Already have an account?</AuthTitle>
       <span>Sign in with your email and password</span>{" "}
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -77,14 +83,18 @@ const SignInForm = () => {
           name="password"
           value={password}
         />
-        <div className="buttons-container">
+        <ButtonsContainer>
           <Button type="submit">Sign In</Button>
-          <Button type="button" buttonType="google" onClick={logGoogleUser}>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPES_CLASSES.google}
+            onClick={logGoogleUser}
+          >
             Google Sign In
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
