@@ -2,7 +2,7 @@
 
 **CRWN-ShopLb** is a modern e-commerce application built with React. This project simulates an online clothing store where users can browse products, add them to their cart, and make purchases. It also includes authentication and a payment processing system.
 
-![CRWN-ShopLb Screenshot](https://ibb.co/G7KYPM0)
+![CRWN-ShopLb Screenshot](src/assets/Screenshot%202024-08-20%20at%2019-27-35%20React%20App.png)
 
 ## Features
 
